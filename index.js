@@ -4,7 +4,7 @@ const port = 3000;
 require("dotenv").config();
 const Airtable = require("airtable-node");
 
-app.get("/", (req, res) => {
+app.get("/movies", (req, res) => {
   const airtable = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN })
     .base(process.env.AIRTABLE_BASE)
     .table(process.env.AIRTABLE_TABLE);
