@@ -2,28 +2,25 @@ const express = require("express");
 const app = express();
 const port = 3000;
 require("dotenv").config();
-let Airtable = require("airtable");
+const Airtable = require("airtable-node");
 
 app.get("/", (req, res) => {
-  let base = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN }).base(
-    process.env.AIRTABLE_BASE
-  );
-
+  const airtable = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN })
+    .base(process.env.AIRTABLE_BASE)
+    .table("movieimages");
   try {
-    base(process.env.AIRTABLE_TABLE)
-      .select({
-        view: "Grid view",
+    airtable
+      .list({
+        maxRecords: 200,
+        pageSize: 100,
+        cellFormat: "json",
       })
-      .firstPage(function (err, records) {
-        if (err) {
-          console.error(err);
-          return;
-        } else {
-          res.send(records);
-        }
+      .then((resp) => {
+        const movie = resp.records;
+        res.send(movie);
       });
   } catch (error) {
-    res.send("There was an error with the API fetch request");
+    res.send("There was an error during the API call");
   }
 });
 
