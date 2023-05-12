@@ -16,8 +16,19 @@ app.get("/", (req, res) => {
         cellFormat: "json",
       })
       .then((resp) => {
-        const movie = resp.records;
-        res.send(movie);
+        const movies = resp.records.map((movie) => {
+          const { id } = movie;
+          const { name, buttonText } = movie.fields;
+          const { url } = movie.fields.images[0];
+          return {
+            id,
+            name,
+            buttonText,
+            url,
+          };
+        });
+
+        res.send(movies);
       });
   } catch (error) {
     res.send("There was an error during the API call");
