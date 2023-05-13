@@ -60,13 +60,14 @@ app.get("/series", (req, res) => {
       .then((resp) => {
         const series = resp.records.map((movie) => {
           const { id } = movie;
-          const { name, buttonText } = movie.fields;
+          const { name, buttonText, genres } = movie.fields;
           const { url } = movie.fields.images[0];
           return {
             id,
             name,
             buttonText,
             url,
+            genres,
           };
         });
 
