@@ -3,6 +3,17 @@ const app = express();
 const port = 3000;
 require("dotenv").config();
 const Airtable = require("airtable-node");
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000/",
+      "https://harmonious-parfait-9117fd.netlify.app/",
+    ],
+    methods: "GET",
+  })
+);
 
 app.get("/", (req, res) => {
   const airtable = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN })
