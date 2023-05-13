@@ -7,7 +7,10 @@ const cors = require("cors");
 
 app.use(
   cors({
-    origin: "https://harmonious-parfait-9117fd.netlify.app",
+    origin: [
+      "https://harmonious-parfait-9117fd.netlify.app",
+      "http://localhost:5173",
+    ],
     methods: "GET",
   })
 );
