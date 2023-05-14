@@ -78,38 +78,6 @@ app.get("/series", (req, res) => {
   }
 });
 
-app.get("/videos", (req, res) => {
-  const airtable = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN })
-    .base(process.env.AIRTABLE_BASE)
-    .table("moviesVideos");
-  try {
-    airtable
-      .list({
-        maxRecords: 200,
-        pageSize: 100,
-        cellFormat: "json",
-      })
-      .then((resp) => {
-        const videos = resp.records.map((video) => {
-          const { id } = video;
-          const fields = video.fields;
-          const { name } = fields;
-          const url = fields.imgSrc[0].url;
-          const urls = fields.videoSrc[0].url;
-          return {
-            id,
-            name,
-            url,
-            urls,
-          };
-        });
-        res.send(videos);
-      });
-  } catch (error) {
-    res.send("There was an error during the API call");
-  }
-});
-
 app.listen(port, () => {
   console.log("i am listening on port 3000");
 });
