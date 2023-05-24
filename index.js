@@ -10,7 +10,7 @@ app.use(
     origin: [
       "https://harmonious-parfait-9117fd.netlify.app",
       "http://localhost:5173",
-      "pesapal.com",
+      "https://pesapal.com",
     ],
     methods: "GET",
   })
