@@ -11,6 +11,7 @@ app.use(
       "https://harmonious-parfait-9117fd.netlify.app",
       "http://localhost:5173",
       "https://pesapal.com",
+      "http://localhost:3000",
     ],
     methods: "GET",
   })
