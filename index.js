@@ -160,7 +160,19 @@ app.get("/products/:id", (req, res) => {
         const filteredProduct = response.filter((product) => {
           return product.id === id;
         });
-        res.send(filteredProduct);
+
+        const { name } = filteredProduct[0].fields;
+        const { url } = filteredProduct[0].fields.url[0];
+        const { subText } = filteredProduct[0].fields;
+        const { buttonText } = filteredProduct[0].fields;
+
+        const modifiedFilteredProducts = {
+          name,
+          url,
+          subText,
+          buttonText,
+        };
+        res.send(modifiedFilteredProducts);
       });
   } catch (error) {
     res.send("There was an error during the API call");
