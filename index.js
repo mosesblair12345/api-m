@@ -143,6 +143,30 @@ app.get("/products", (req, res) => {
   }
 });
 
+app.get("/products/:id", (req, res) => {
+  const id = req.params.id;
+  const airtable = new Airtable({ apiKey: process.env.AIRTABLE_ACCESS_TOKEN })
+    .base(process.env.AIRTABLE_BASE)
+    .table("products");
+  try {
+    airtable
+      .list({
+        maxRecords: 200,
+        pageSize: 100,
+        cellFormat: "json",
+      })
+      .then((resp) => {
+        const response = resp.records;
+        const filteredProduct = response.filter((product) => {
+          return product.id === id;
+        });
+        res.send(filteredProduct);
+      });
+  } catch (error) {
+    res.send("There was an error during the API call");
+  }
+});
+
 app.listen(port, () => {
   console.log("i am listening on port 3000");
 });
