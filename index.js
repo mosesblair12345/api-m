@@ -167,11 +167,13 @@ app.get("/products/:id", (req, res) => {
           const { url } = filteredProduct[0].fields.url[0];
           const { subText } = filteredProduct[0].fields;
           const { buttonText } = filteredProduct[0].fields;
+          const { ammount } = filteredProduct[0].fields;
           const modifiedFilteredProducts = {
             name,
             url,
             subText,
             buttonText,
+            ammount,
           };
           res.send(modifiedFilteredProducts);
         }
