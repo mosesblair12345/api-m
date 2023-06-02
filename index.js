@@ -188,7 +188,7 @@ app.get("/pesapalInitial", (req, res) => {
 });
 
 app.post("/receiveNotifications", (req, res) => {
-  res.send("i am being posted");
+  res.send(req.body);
 });
 
 app.listen(port, () => {
