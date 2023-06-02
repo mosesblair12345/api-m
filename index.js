@@ -183,6 +183,14 @@ app.get("/products/:id", (req, res) => {
   }
 });
 
+app.get("/pesapalInitial", (req, res) => {
+  res.send("pesapal initial");
+});
+
+app.post("/receiveNotifications", (req, res) => {
+  res.send("i am being posted");
+});
+
 app.listen(port, () => {
   console.log("i am listening on port 3000");
 });
