@@ -11,7 +11,7 @@ const session = require("express-session");
 app.use(
   cors({
     origin: [
-      "https://timely-zabaione-991243.netlify.app/",
+      "https://timely-zabaione-991243.netlify.app",
       "http://localhost:5173",
       "https://pesapal.com",
     ],
