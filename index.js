@@ -230,7 +230,7 @@ app.post("/pesapalInitial", (req, res) => {
         currency: "KES",
         amount: 1,
         description: "Payment for movies or series",
-        callback_url: "hhttps://harmonious-parfait-9117fd.netlify.app/feedback",
+        callback_url: "https://harmonious-parfait-9117fd.netlify.app/feedback",
         redirect_mode: "",
         notification_id: ipnId,
         branch: "Onfon Media",
