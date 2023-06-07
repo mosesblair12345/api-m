@@ -11,7 +11,7 @@ const session = require("express-session");
 app.use(
   cors({
     origin: [
-      "https://harmonious-parfait-9117fd.netlify.app",
+      "https://timely-zabaione-991243.netlify.app/",
       "http://localhost:5173",
       "https://pesapal.com",
     ],
@@ -230,7 +230,7 @@ app.post("/pesapalInitial", (req, res) => {
         currency: "KES",
         amount: 1,
         description: "Payment for movies or series",
-        callback_url: "https://harmonious-parfait-9117fd.netlify.app/feedback",
+        callback_url: "https://timely-zabaione-991243.netlify.app/feedback",
         redirect_mode: "",
         notification_id: ipnId,
         branch: "Onfon Media",
